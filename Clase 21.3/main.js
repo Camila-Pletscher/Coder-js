@@ -17,7 +17,7 @@ console.log(persona1.calle);
 console.log(persona1);
 
 //para asignar un valor 
-persona1.nombre = "Marge"
+persona1.nombre = "Marge "
 
 console.log(persona1.nombre);
 
