@@ -43,3 +43,51 @@
 
 // container.className = "container row"
 
+// //Creo un elemento <p> y lo agrego con append
+
+// let parrafo = document.createElement("p");
+
+// parrafo.innerHTML = "<h2>Hola Coder</h2>";
+
+// document.body.append(parrafo);
+
+// //Elimino el elemento parrafo 1 
+
+// let parrafo = document.getElementById("parrafo1");
+
+// parrafo.remove();
+
+// //Asigno valor a un input
+
+// document.getElementById("nombre").value = "Homero";
+
+// //Recorro un array que voy llenando
+
+// let padre = document.getElementById("personas");
+
+// let personas = ["Homero", "Marge", "Bart", "Lisa"];
+
+// for (const persona of personas) {
+//     let li = document.createElement("li");
+
+//     li.innerHTML = persona
+
+//     padre.appendChild(li);
+// }
+
+
+
+
+//PLANTILLAS LITERALES
+
+let producto = {id: 1, nombre: "arroz", precio: 125};
+
+let concatenado = "id: " + producto.id + "producto: " + producto.nombre
+
+let plantillas = `ID: ${producto.id} - Producto: ${producto.nombre}`
+
+
+
+
+
+
