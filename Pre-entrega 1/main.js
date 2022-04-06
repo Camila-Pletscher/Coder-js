@@ -8,22 +8,24 @@ class Producto {
         this.stock = stock
     }
 
-    // actualizarStock(i) {
-    //     this.stock = this.stock - i;
-    // }
 }
 
 const listaDeProductos = [];
 
 listaDeProductos.push(new Producto (1, 'Buzo del REY LEON', 4500, 10))
-listaDeProductos.push(new Producto (2, 'Buzo de MULAN', 4200, 9))
-listaDeProductos.push(new Producto (3, 'Buzo de TOY STORY', 4300, 8))
-
-console.log((listaDeProductos));
+listaDeProductos.push(new Producto (2, 'Buzo de MULAN', 4200, 10))
+listaDeProductos.push(new Producto (3, 'Buzo de TOY STORY', 4300, 10))
+listaDeProductos.push(new Producto (4, 'Buzo de ALADIN', 4250, 10))
+listaDeProductos.push(new Producto (5, 'Buzo de SAILOR MOON', 4100, 10))
+listaDeProductos.push(new Producto (6, 'Remera de FRIENDS', 2100, 10))
+listaDeProductos.push(new Producto (7, 'Remera de JUEGO DE GEMELAS', 2200, 10))
+listaDeProductos.push(new Producto (8, 'Remera de CHANDLER MOOD', 2350, 10))
+listaDeProductos.push(new Producto (9, 'Remera de PANTONE MUSHU', 2500, 10))
+listaDeProductos.push(new Producto (10, 'Remera de HAKUNA MATATA', 2400, 10))
 
 
 function buscarProducto(listaDeProductos) {
-    let buscar = confirm("Queres buscar el producto que estas buscando");
+    let buscar = confirm("Queres ingresar el producto que estas buscando?");
     
     while(buscar) {
         let busqueda = prompt("Ingresa el producto que buscas");
@@ -31,18 +33,21 @@ function buscarProducto(listaDeProductos) {
         
         if (resultado) {
             const encontrado = listaDeProductos.find((el) => el.nombre.toLowerCase() === busqueda.toLowerCase());
-            alert(encontrado.nombre + "\n" + encontrado.precio + "\n" + encontrado.stock);
+            alert(`Producto: ${encontrado.nombre}\nPrecio: $ ${encontrado.precio}\nDisponibles: ${encontrado.stock} unidades`)
+            
         } else {
             alert("Producto no encontrado");
         }
 
-        buscar = confirm("Buscar otro producto")
+        buscar = confirm("Indique si quiere buscar otro producto")
     }
 
-    let respuesta = confirm("Queres continuar con la compra"); 
+    let respuesta = confirm("Indique si quiere continuar con la compra"); 
     
     if (respuesta) {
         agregarAlCarrito();
+        agregarCostoDeEnvio(total);
+        aplicarDescuento(total);
     } else {
         alert("Adios");
     }
@@ -73,59 +78,16 @@ function agregarAlCarrito() {
                     listaDeProductos[i].stock = listaDeProductos[i].stock - cantidad;
                     precio = listaDeProductos[i].precio * cantidad;
                 } else {
-                    alert("No hay suficiente stock");
+                    alert("No hay suficiente stock del producto seleccionado");
                 }
             } 
             
         } 
         if (codigoCorrecto == false) {            
-                alert("El codigo ingresado no coincide con ningun producto")
+                alert("El codigo ingresado no coincide con ninguno de nuestros productos")
             
         } 
-    
-        // switch (codigoDeProducto) {
-        //     case listaDeProductos[0].codigo:
-                
-        //         // listaDeProductos[0].actualizarStock(cantidad);
-        //         console.log(cantidad);
-        //         if (listaDeProductos[0].stock < 0 || isNaN(cantidad)) {
-        //             alert("No tenemos stock")
-        //             listaDeProductos[0].stock = listaDeProductos[0].stock + cantidad;
-        //             precio = 0;
-        //             cantidad = 0;
-        //         } else {
-        //             precio = listaDeProductos[0].precio;
-        //         }
-        //         break;
-        //     case listaDeProductos[1].codigo:
-        //         // listaDeProductos[1].actualizarStock(cantidad);
-        //         if (listaDeProductos[1].stock < 0 || isNaN(cantidad)) {
-        //             alert("No tenemos stock")
-        //             listaDeProductos[1].stock = listaDeProductos[1].stock + cantidad;
-        //             precio = 0;
-        //             cantidad = 0;
-        //         } else {
-        //             precio = listaDeProductos[1].precio;
-        //         }
-        //         break;
-        //     case listaDeProductos[2].codigo:
-        //         // listaDeProductos[2].actualizarStock(cantidad);
-        //         if (listaDeProductos[2].stock < 0 || isNaN(cantidad)) {
-        //             alert("No tenemos stock")
-        //             listaDeProductos[2].stock = listaDeProductos[2].stock + cantidad;
-        //             precio = 0;
-        //             cantidad = 0;
-        //         } else {
-        //             precio = listaDeProductos[2].precio;
-        //         }
-        //         break;
-            
-        //     default:
-        //         alert("Ingreso un código no valido");
-        //         precio = 0;
-        //         cantidad = 0;
-                
-        // } 
+
         total = total + precio;
         otroProducto = confirm("Indique 'ACEPTAR' si quiere seguir agregando productos o 'CANCELAR' si quiere terminar la compra");
     } while(otroProducto)
@@ -199,6 +161,5 @@ function agregarCostoDeEnvio(total) {
 
 
 buscarProducto(listaDeProductos);
-agregarCostoDeEnvio(total);
-aplicarDescuento(total);
+
 
