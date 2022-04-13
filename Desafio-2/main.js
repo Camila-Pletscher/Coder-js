@@ -26,6 +26,10 @@ listaDeProductos.push(new Producto(10, "Remera de HAKUNA MATATA", 2400, 10));
 let datalist = document.getElementById("datalist");
 let cantidadProducto = document.getElementById("cantidadProducto");
 let tablaPedido = document.getElementById("tablaPedido");
+let limpiarPedido = document.getElementById("limpiarPedido");
+let boton = document.getElementById("agregarAlPedido");
+let botonFinalizar = document.getElementById("finalizarPedido");
+
 
 const crearListaDeProductos = (listaDeProductos) => {
     listaDeProductos.forEach( producto => {
@@ -33,9 +37,8 @@ const crearListaDeProductos = (listaDeProductos) => {
     })
 };
 
-let boton = document.getElementById("agregarAlPedido"); 
 
-boton.addEventListener("click", agregarAlCarrito);
+
 
 function agregarAlCarrito () {
     
@@ -65,18 +68,33 @@ function agregarAlCarrito () {
 
 }
 
-let botonFinalizar = document.getElementById("finalizarPedido");
 
-botonFinalizar.addEventListener("click", finalizarPedido);
+
+
 
 function finalizarPedido () {
-    alert(`Pedido realizado correctamente\nEl total a pagar es de ${total}`);
     
+    if ((datalist.value != "Seleccione un producto") && (cantidadProducto.value != "" && cantidadProducto.value != 0)) {
+      alert(`Pedido realizado correctamente\nEl total a pagar es de ${total}`);
+    } else {
+      alert("Usted no selecciono ningún producto o cantidad")
+    }
+    
+    total = 0;
 
 }
 
+limpiarPedido.addEventListener("click", limpiarElPedido);
 
+function limpiarElPedido () {
+  tablaPedido.innerHTML = "";
+  datalist.value = "";
+  cantidadProducto.value = "";
+  
+}
 
+boton.addEventListener("click", agregarAlCarrito);
+botonFinalizar.addEventListener("click", finalizarPedido);
 crearListaDeProductos(listaDeProductos);
 
 
